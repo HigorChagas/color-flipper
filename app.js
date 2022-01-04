@@ -6,20 +6,18 @@ const colors = [
     '#CDB4DB',
 ];
 
-let colorIndex;
-
-const nextIndex = () => {
-    if(colorIndex < 4) {
-        colorIndex++
-    } else {
-        colorIndex = 0;
-    }
-
-    return colorIndex;
-}
 const button = document.querySelector('#btn');
 const spanColor = document.querySelector('.color');
+const container = document.querySelector('.container');
+
 
 button.addEventListener('click', () => {
-    spanColor.innerText = colors[nextIndex()];
+    const randomNumber = getRandomNumber();
+    spanColor.textContent = colors[randomNumber];
+    container.style.backgroundColor = colors[randomNumber];
 });
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * colors.length);
+}
+ 
