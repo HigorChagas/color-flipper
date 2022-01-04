@@ -7,10 +7,20 @@ const colors = [
 ];
 
 const button = document.querySelector('#btn');
+const copyButton = document.querySelector('#copy');
 const spanColor = document.querySelector('.color');
 const container = document.querySelector('.container');
 
+copyButton.addEventListener('click', () => {
+    const range = document.createRange();
+    range.selectNode(spanColor);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
 
+    alert('Color copied!');
+});
 button.addEventListener('click', () => {
     const randomNumber = getRandomNumber();
     spanColor.textContent = colors[randomNumber];
